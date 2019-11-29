@@ -8,6 +8,11 @@ export class ApiService {
 
   baseUrl = "http://127.0.0.1:8000/api/movies/"
 
+  headers = new HttpHeaders({
+  	'Content-Type': 'application/json',
+  	Authorization: 'Token token_id_here'
+  })
+
   private movies = ['Terminator', 'Transformer', 'Transpoter']
 
   constructor(private httpClient: HttpClient) { }
@@ -17,6 +22,6 @@ export class ApiService {
   	//console.log(dynamicMovies)
   	//return this.movies;
 
-  	return this.httpClient.get(this.baseUrl)
+  	return this.httpClient.get(this.baseUrl, {headers: this.headers})
   }
 }
