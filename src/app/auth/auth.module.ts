@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AuthComponent } from './auth.component';
 
-const routes: Router = [
+const routes: Routes = [
 	{path: 'auth', component: AuthComponent}
 ]
 
@@ -15,6 +15,6 @@ const routes: Router = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-  export: [RouterModule],
+  exports: [RouterModule],
 })
 export class AuthModule { }

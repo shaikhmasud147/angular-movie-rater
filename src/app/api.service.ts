@@ -10,8 +10,8 @@ export class ApiService {
 
   headers = new HttpHeaders({
   	'Content-Type': 'application/json',
-  	Authorization: 'Token token_id_here'
-  })
+  	'Authorization': 'Token 1b320772684ca7a2c722e09fc6296f1cf607972e'
+  });
 
   private movies = ['Terminator', 'Transformer', 'Transpoter']
 

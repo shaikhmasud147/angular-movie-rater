@@ -9,7 +9,7 @@ import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { MovieFormComponent } from './movie-form/movie-form.component';
 
-const routes: Router = [
+const routes: Routes = [
 	{path: 'movies', component: MainComponent}
 ]
 
@@ -24,7 +24,7 @@ const routes: Router = [
     CommonModule,
     RouterModule.forChild(routes)
   ],
-   export: [RouterModule],
+   exports: [RouterModule],
    providers: [ApiService],
 })
 export class MainModule { }

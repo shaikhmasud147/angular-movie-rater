@@ -13,15 +13,13 @@ export class MovieListComponent implements OnInit {
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
-  	//this.movies = this.apiService.getMovies()
   	this.apiService.getMovies().subscribe(
   		data => {
-  			this.movies = data
+  			this.movies = data;
+        console.log(data)
   		},
-  		error => {
-  			console.log(error)
-  		}
-  	)
+  		error => console.log(error)
+  	);
   }
 
 }
