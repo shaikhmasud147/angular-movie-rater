@@ -7,4 +7,11 @@
 	<fa-icon [icon]="faStar" [ngClass]="{'rating-orange': movie.avg_rating > 4}"></fa-icon>
 	({{ movie.no_of_ratings }})
 	<p>{{ movie?.description }}</p>
+
+	<div id="rate-container">
+		<h2>Rate it !!!</h2>
+		<fa-icon [icon]="faStar" *ngFor="let rate of [1,2,3,4,5]" (mouseenter)="rateHover(rate)" 
+		[ngClass]="{'rating-purple': rateHovered >= rate}" (mouseleave)="rateHovered = 0"
+		(click)="rateClicked(rate)"></fa-icon>
+	</div>
 </div>

@@ -1,3 +1,13 @@
 .rating-orange{
-	color: 	#FF7F50;
+	color: #FF7F50;
+}
+.rating-purple{
+	color: #FF7F50;
+}
+#rate-container{
+	border-top: 2px solid #FF7F50; 
+}
+#rate-container fa-icon{
+	cursor: pointer;
+	font-size: 2em;
 }

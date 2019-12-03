@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
+import { ApiService } from '../../api.service';
 
 @Component({
   selector: 'app-movie-details',
@@ -9,13 +10,28 @@ import { faCoffee, faStar } from '@fortawesome/free-solid-svg-icons';
 export class MovieDetailsComponent implements OnInit {
 
   @Input() movie
+  rateHovered = 0
 
   faCoffee = faCoffee; 
   faStar = faStar;  
 
-  constructor() { }
+  constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+  }
+
+  rateHover(rate) {
+  	//console.log(rate)
+  	this.rateHovered = rate
+  }
+
+  rateClicked(rate) {
+  	this.apiService.rateMovie(rate, this.movie.id).subscribe(
+  		result => {
+  			console.log(result)
+  		},
+  		error => console.log(error)
+  	)
   }
 
 }
