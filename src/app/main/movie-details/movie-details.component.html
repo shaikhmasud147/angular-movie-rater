@@ -1,2 +1,10 @@
-<h2>{{ movie?.title }}</h2>
-<p>{{ movie?.description }}</p>
+<div *ngIf="movie">
+	<h2>{{ movie?.title }}</h2>
+	<fa-icon [icon]="faStar" [ngClass]="{'rating-orange': movie.avg_rating > 0}"></fa-icon>
+	<fa-icon [icon]="faStar" [ngClass]="{'rating-orange': movie.avg_rating > 1}"></fa-icon>
+	<fa-icon [icon]="faStar" [ngClass]="{'rating-orange': movie.avg_rating > 2}"></fa-icon>
+	<fa-icon [icon]="faStar" [ngClass]="{'rating-orange': movie.avg_rating > 3}"></fa-icon>
+	<fa-icon [icon]="faStar" [ngClass]="{'rating-orange': movie.avg_rating > 4}"></fa-icon>
+	({{ movie.no_of_ratings }})
+	<p>{{ movie?.description }}</p>
+</div>
