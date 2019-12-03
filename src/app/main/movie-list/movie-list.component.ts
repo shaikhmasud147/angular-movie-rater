@@ -15,7 +15,7 @@ export class MovieListComponent implements OnInit {
   ngOnInit() {}
 
   movieClicked(movie) {
-    console.log(movie)
+    //console.log(movie)
     this.selectMovie.emit(movie)
   }
 
