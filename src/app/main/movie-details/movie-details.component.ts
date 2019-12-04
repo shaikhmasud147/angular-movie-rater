@@ -29,12 +29,12 @@ export class MovieDetailsComponent implements OnInit {
 
   rateClicked(rate: number) {
   	this.apiService.rateMovie(rate, this.movie.id).subscribe(
-  		result => this.getDetails(),
+  		result => this.getDetails(rate),
   		error => console.log(error)
   	)
   }
 
-  getDetails(rate) {
+  getDetails(rate: number) {
   	this.apiService.getMovie(this.movie.id).subscribe(
   		(movie: Movie) => {
   			this.updateMovie.emit(movie)

@@ -52,8 +52,9 @@ export class MainComponent implements OnInit {
     //console.log('delete: ', movie.title)
     this.apiService.deleteMovie(movie.id).subscribe(
       data => {
-          console.log(data)
+          //console.log(data)
           //this.movies = data
+          return true
       },
       error => console.log(error)
     );  
