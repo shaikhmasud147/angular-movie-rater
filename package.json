@@ -8,12 +8,15 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build -d -prod"
+    "postinstall": "ng build --aot -prod",
+    "deploy": "git push origin master && git push heroku master"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "~8.2.0",
     "@angular/common": "~8.2.0",
+    "@angular/cli": "~8.2.1",
+    "@angular/compiler-cli": "~8.2.0",
     "@angular/compiler": "~8.2.0",
     "@angular/core": "~8.2.0",
     "@angular/forms": "~8.2.0",
