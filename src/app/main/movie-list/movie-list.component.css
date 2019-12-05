@@ -1,0 +1,14 @@
+.movie-item{
+	display:grid;
+	grid-template-columns: 1fr auto auto;
+}
+.movie-item fa-icon{
+	font-size: 1.0em;
+	margin: 15px 5px;
+}
+fa-icon[name='edit']{
+	color: white;
+}
+fa-icon[name='trash']{
+	color: crimson;
+}
