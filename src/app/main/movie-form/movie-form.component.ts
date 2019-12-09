@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../../models/Movie';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -23,9 +23,21 @@ export class MovieFormComponent implements OnInit {
   	})
   }
 
+  @Output() movieCreated = new EventEmitter<Movie>()
+  @Output() movieUpdated = new EventEmitter<Movie>()
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit() {
+  }
+
+  formDisabled() {
+    if(this.movieForm.value.title.length &&
+       this.movieForm.value.description.length){
+        return false
+     }else{
+        return true
+     }
   }
 
   saveForm() {
@@ -36,8 +48,8 @@ export class MovieFormComponent implements OnInit {
 	  		this.movieForm.value.title,
 	  		this.movieForm.value.description
   	).subscribe(
-	  		result => {
-	  			console.log(result)
+	  		(result: Movie) => {
+	  			this.movieUpdated.emit(result)
 	  		},
 	  		error => console.log(error)
   	 	)
@@ -46,8 +58,8 @@ export class MovieFormComponent implements OnInit {
 	  		this.movieForm.value.title,
 	  		this.movieForm.value.description
   	).subscribe(
-	  		result => {
-	  			console.log(result)
+	  		(result: Movie) => {
+	  			this.movieCreated.emit(result)
 	  		},
 	  		error => console.log(error)
   		)

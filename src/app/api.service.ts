@@ -7,8 +7,8 @@ import { Movie } from './models/Movie';
 })
 export class ApiService {
 
-  //baseUrl = "http://127.0.0.1:8000/api/movies/"
-  baseUrl = "https://movie-rating-django.herokuapp.com/api/movies/"
+  baseUrl = "http://127.0.0.1:8000/api/movies/"
+  //baseUrl = "https://movie-rating-django.herokuapp.com/api/movies/"
 
   headers = new HttpHeaders({
   	'Content-Type': 'application/json',

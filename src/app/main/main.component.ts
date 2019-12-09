@@ -53,11 +53,23 @@ export class MainComponent implements OnInit {
     this.apiService.deleteMovie(movie.id).subscribe(
       data => {
           //console.log(data)
-          //this.movies = data
-          return true
+          this.movies = this.movies.filter(mov => mov.id !== movie.id)
       },
       error => console.log(error)
     );  
+  }
+
+  movieCreated(movie: Movie) {
+    this.movies.push(movie)
+    this.editedMovie = null
+  }
+
+  movieUpdated(movie: Movie) {
+    const indx = this.movies.findIndex(mov => mov.id === movie.id)
+    if(indx >= 0){
+      this.movies[indx] = movie;
+      this.editedMovie = null
+    }
   }
 
 }

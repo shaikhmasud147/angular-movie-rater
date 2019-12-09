@@ -5,5 +5,12 @@
 	padding: 50px;
 }
 h2{
-	text-align: center;
+	color: #FF7F50;
+	padding: 0px 316px;
+	font-size: 3em;
+}
+
+h2 fa-icon {
+	display: inline-block;
+	transform: rotate(30deg);
 }
