@@ -10,7 +10,6 @@ export class ApiService {
 
   baseUrl = "http://127.0.0.1:8000/"
   baseMovieApiUrl = `${this.baseUrl}api/movies/`
-  baseAuthUrl = `${this.baseUrl}auth/`
   //baseUrl = "https://movie-rating-django.herokuapp.com/api/movies/"
 
   headers = new HttpHeaders({
@@ -54,7 +53,13 @@ export class ApiService {
   loginUser(authData) {
     //console.log(authData)
     const body = JSON.stringify(authData)
-    return this.httpClient.post(`${this.baseAuthUrl}`, body, {headers: this.headers})
+    return this.httpClient.post(`${this.baseUrl}auth/`, body, {headers: this.headers})
+  }
+
+  registerUser(authData) {
+    //console.log(authData)
+    const body = JSON.stringify(authData)
+    return this.httpClient.post(`${this.baseUrl}api/users/`, body, {headers: this.headers})
   }
 
   getAuthHeader() {

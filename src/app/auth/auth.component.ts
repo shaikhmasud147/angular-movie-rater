@@ -20,30 +20,61 @@ export class AuthComponent implements OnInit {
   		password: new FormControl('')
    })
 
+   registerMode = false
+
   constructor(private apiService: ApiService,
               private cookieService: CookieService,
               private router: Router
             ) { }
 
   ngOnInit() {
-    const mrToken = this.cookieService.get('mr-token')
-
+    const mrToken = this.getAuthCookie()
     if(mrToken){
       this.router.navigate(['/movies'])
-    }else{
-      this.router.navigate(['/auth'])
     }
   }
 
   saveForm() {
+    if(!this.registerMode){
+      this.loginUser()
+    }else{
+      this.registerUser()
+    }
+    
+  }
+
+  loginUser() {
     this.apiService.loginUser(this.authForm.value).subscribe(
-      (result: TokenObj) => {
+    (result: TokenObj) => {
+        //console.log(result)
+        this.setAuthCookie(result)
+        this.router.navigate(['/movies'])
+    },
+    error => console.log(error),
+   )
+  }
+
+  registerUser() {
+    this.apiService.registerUser(this.authForm.value).subscribe(
+      result => {
           //console.log(result)
-          this.cookieService.set('mr-token', result.token)
+          this.setAuthCookie(result)
           this.router.navigate(['/movies'])
       },
       error => console.log(error),
     )
+  }
+
+  setAuthCookie(result) {
+    this.cookieService.set('mr-token', result.token)
+  }
+
+  getAuthCookie() {
+    this.cookieService.get('mr-token')
+  }
+
+  deleteAuthCookie() {
+    this.cookieService.delete('mr-token')
   }
 
 }
