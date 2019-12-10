@@ -29,7 +29,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     const mrToken = this.getAuthCookie()
-    if(mrToken){
+    if(this.mrToken){
       this.router.navigate(['/movies'])
     }
   }
