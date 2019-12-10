@@ -24,7 +24,7 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     const mrToken = this.cookieService.get('mr-token')
 
-    if(!mrToken){
+    if(mrToken === null && mrToken === undefined){
       this.router.navigate(['/auth'])
     }else{
       this.apiService.getMovies().subscribe(

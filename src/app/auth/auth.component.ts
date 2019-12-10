@@ -29,13 +29,13 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     const mrToken = this.getAuthCookie()
-    if(this.mrToken){
+    if(mrToken !== null && mrToken !== undefined) {
       this.router.navigate(['/movies'])
     }
   }
 
   saveForm() {
-    if(!this.registerMode){
+    if(!this.registerMode) {
       this.loginUser()
     }else{
       this.registerUser()
